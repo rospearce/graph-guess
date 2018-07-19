@@ -1,5 +1,5 @@
 var firstPath = new Path({
-	segments: [[0, 115], [100, 180], [200, 130]]
+	segments: [[0, 220], [50, 200], [100, 205], [150, 190], [200, 170]]
 });
 
 firstPath.strokeColor = '#ff0000'; // red
@@ -45,7 +45,7 @@ function firstMouseDown() {
 	};
     userPath = new Path();
     // make sure that it starts where the other line ends
-    userPath.add(new Point(200, 130));
+    userPath.add(new Point(200, 170));
     userPath.strokeColor = '#2f8fce';
     userPath.strokeWidth = 2;
     userPath.strokeCap = 'round';
