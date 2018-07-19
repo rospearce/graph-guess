@@ -1,7 +1,8 @@
 var firstPath = new Path({
-	segments: [[0, 115], [100, 180], [200, 130]],
-	selected: true
+	segments: [[0, 115], [100, 180], [200, 130]]
 });
+
+firstPath.strokeColor = '#ff0000'; // red
 
 var userPath;
 
@@ -9,7 +10,36 @@ var userPath;
 // before the next drag event is fired:
 tool.minDistance = 20;
 
+var mouseDown = false;
+
 function onMouseDown(event) {
+    if (mouseDown == false) {
+        firstMouseDown(event);
+    } else {
+        otherMouseDown();
+        console.log("second mouse down");
+    }
+}
+
+function onMouseDrag(event) {
+    if (mouseDown == false) {
+        firstMouseDrag(event);
+    } else {
+        otherMouseDrag();
+        console.log("second mouse drag");
+    }
+}
+
+function onMouseUp(event) {
+    if (mouseDown == false) {
+        firstMouseUp(event);
+    } else {
+        otherMouseUp();
+        console.log("second mouse up");
+    }
+}
+
+function firstMouseDown() {
 	if (userPath) {
 		userPath.selected = false;
 	};
@@ -19,14 +49,24 @@ function onMouseDown(event) {
     userPath.strokeColor = '#2f8fce';
     userPath.strokeWidth = 2;
     userPath.strokeCap = 'round';
-	userPath.fullySelected = true;
+    userPath.fullySelected = true;
+    
 }
 
-function onMouseDrag(event) {
+function otherMouseDown () {
+    
+}
+
+function firstMouseDrag (event) {
 	userPath.add(event.point);
 }
 
-function onMouseUp(event) {
+function otherMouseDrag () {
+
+}
+
+function firstMouseUp () {
+
     userPath.selected = false;
 
     // attempt to get final segment value
@@ -42,5 +82,12 @@ function onMouseUp(event) {
     // When the mouse is released, simplify it:
 	userPath.simplify();
     userPath.smooth();
-    userPath.dashArray = [6, 8];
+    userPath.dashArray = [4, 6];
+
+    mouseDown = true;
+
+}
+
+function otherMouseUp () {
+
 }
