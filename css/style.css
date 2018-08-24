@@ -11,8 +11,14 @@ body {
     width: 700px;
 }
 
+#chart-wrapper {
+    width: 100%;
+    position: relative;
+    height: 420px;
+}
+
 #myCanvas {
-    width: 660px;
+    width: 560px;
     height: 370px;
     position: absolute;
     margin-top: 10px;
@@ -22,15 +28,15 @@ body {
 }
 
 .chart {
-    width: 700px;
+    width: 600px;
     height: 400px;
     position: absolute;
 }
 
 #controls {
     width: 100%;
-    top: 410px;
-    position: absolute;
+    position: relative;
+    visibility: hidden;
 }
 
 .line {

@@ -45,7 +45,7 @@ function firstMouseDown() {
 	};
     userPath = new Path();
     // make sure that it starts where the other line ends
-    userPath.add(new Point(195, 225));
+    userPath.add(new Point(165, 225));
     userPath.strokeColor = '#2f8fce';
     userPath.strokeWidth = 2;
     userPath.strokeCap = 'round';
@@ -85,6 +85,9 @@ function firstMouseUp () {
     userPath.dashArray = [4, 6];
 
     mouseDown = true;
+
+    // show buttons
+    document.getElementById("controls").style.visibility = "visible";
 
 }
 
