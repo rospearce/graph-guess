@@ -7,6 +7,10 @@ body {
     height: 800px;
 }
 
+#wrapper {
+    width: 700px;
+}
+
 #myCanvas {
     width: 660px;
     height: 370px;
@@ -23,8 +27,20 @@ body {
     position: absolute;
 }
 
+#controls {
+    width: 100%;
+    top: 410px;
+    position: absolute;
+}
+
 .line {
     fill: none;
     stroke: #333333;
+    stroke-width: 1.5px;
+}
+
+.line2 {
+    fill: none;
+    stroke: red;
     stroke-width: 1.5px;
 }

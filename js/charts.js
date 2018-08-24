@@ -22,7 +22,7 @@ var valueLine = d3.line()
 // for data after 1900
 // using this rather than the keys method since there's just two of them
 var valueLine2 = d3.line()
-    .defined(function(d) { return d.anomaly != 0; })
+    .defined(function(d) { return d.average2 != 0; })
     .curve(d3.curveCardinal)
     .x(function(d) { return x(d.year); })
     .y(function(d) { return y(d.average2); });
@@ -107,3 +107,29 @@ function drawChart() {
 }
 
 drawChart();
+
+function updateChart() {
+
+    d3.csv(csv, function(error, data) {
+        // load the data again
+
+        data.forEach(function(d) {
+            d.year = parseDate(d.year);
+            d.average1 = +d.smoothed_anoms1;
+            d.average2 = +d.smoothed_anoms2;
+        });
+
+        x.domain([parseDate(1850), parseDate(2018)]);
+        y.domain([-2, 3]);
+
+        // Add the second valueline path.
+        svg.append("path")
+        .data([data])
+        .attr("class", "line2")
+        .attr("clip-path","url(#graph-clip)")
+        .attr("d", valueLine2);
+
+
+    })
+
+}
