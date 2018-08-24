@@ -5,11 +5,14 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <!-- Load the Paper.js library -->
     <script type="text/javascript" src="js/paper-full.min.js"></script>
+    <script src="//d3js.org/d3.v4.min.js"></script>
     <!-- Load external PaperScript and associate it with myCanvas -->
     <script type="text/paperscript" src="js/script.js" canvas="myCanvas">
 </script>
 </head>
 <body>
-	<canvas id="myCanvas" resize></canvas>
+    <div id="myChart" class="chart"></div>
+    <canvas id="myCanvas" resize></canvas>
+    <script src="js/charts.js"></script>
 </body>
 </html>
