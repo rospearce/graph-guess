@@ -13,7 +13,7 @@ var y = d3.scaleLinear()
     .range([height, 0]);
 
 // define the line
-var valueLine = d3.line()
+var line = d3.line()
     .defined(function(d) { return d.average1 != 0; }) // remove values with exactly 0, since these are the nulls
     .curve(d3.curveCardinal)
     .x(function(d) { return x(d.year); })
@@ -21,7 +21,7 @@ var valueLine = d3.line()
 
 // for data after 1900
 // using this rather than the keys method since there's just two of them
-var valueLine2 = d3.line()
+var line2 = d3.line()
     .defined(function(d) { return d.average2 != 0; })
     .curve(d3.curveCardinal)
     .x(function(d) { return x(d.year); })
@@ -30,6 +30,20 @@ var valueLine2 = d3.line()
 var zeroLine = d3.line()
     .x(function(d) { return x(d.year); })
     .y(function(d) { return y(0); });
+
+// from https://bl.ocks.org/mbostock/5649592
+
+function transition(path) {
+    path.transition()
+        .duration(5000)
+        .attrTween("stroke-dasharray", tweenDash);
+}
+    
+function tweenDash() {
+    var l = this.getTotalLength(),
+        i = d3.interpolateString("0," + l, l + "," + l);
+    return function(t) { return i(t); };
+}
 
 var xAxis = d3.axisBottom(x);
 
@@ -94,12 +108,12 @@ function drawChart() {
         .attr("class", "y axis")
         .call(d3.axisLeft(y));
 
-        // Add the valueline path.
+        // Add the line path.
         svg.append("path")
         .data([data])
         .attr("class", "line")
         .attr("clip-path","url(#graph-clip)")
-        .attr("d", valueLine);
+        .attr("d", line);
 
 
     })
@@ -122,12 +136,26 @@ function updateChart() {
         x.domain([parseDate(1850), parseDate(2018)]);
         y.domain([-2, 3]);
 
-        // Add the second valueline path.
+        // Add the second line path.
         svg.append("path")
         .data([data])
         .attr("class", "line2")
         .attr("clip-path","url(#graph-clip)")
-        .attr("d", valueLine2);
+        .attr("d", line2)
+        .call(transition);;
+
+        // let lines2 = svg.append('g')
+        // .attr('class', 'lines2');
+    
+        // lines2.selectAll('.line-group')
+        // .data([data]).enter()
+        // .append('g')
+        // .attr('class', 'line-group')
+        // .append('path')
+        // .attr('class', 'line2')  
+        // .attr("d", function(d) { return line2(d.values); })
+        // // .style('stroke', "#f3f3f3")
+        // .call(transition);
 
 
     })
