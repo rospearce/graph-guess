@@ -45,8 +45,8 @@ function firstMouseDown() {
 	};
     userPath = new Path();
     // make sure that it starts where the other line ends
-    userPath.add(new Point(165, 225));
-    userPath.strokeColor = '#2f8fce';
+    userPath.add(new Point(0, 225));
+    userPath.strokeColor = '#EFC530';
     userPath.strokeWidth = 2;
     userPath.strokeCap = 'round';
     userPath.fullySelected = true;
@@ -93,4 +93,8 @@ function firstMouseUp () {
 
 function otherMouseUp () {
 
+}
+
+function removeUserPath() {
+    userPath.remove();
 }

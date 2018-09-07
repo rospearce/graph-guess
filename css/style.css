@@ -18,13 +18,14 @@ body {
 }
 
 #myCanvas {
-    width: 560px;
+    width: 393px;
     height: 370px;
     position: absolute;
     margin-top: 10px;
     margin-bottom: 20px;
-    margin-left: 35px;
+    margin-left: 198px;
     margin-right: 10px;
+    background: rgba(239, 198, 48, 0.05)
 }
 
 .chart {
@@ -47,7 +48,7 @@ body {
 
 .line2 {
     fill: none;
-    stroke: red;
+    stroke: #2f8fce;
     stroke-width: 2.5px;
 }
 
@@ -72,3 +73,20 @@ body {
 .axis text{
     fill: #333333;
 } 
+
+.instructions {
+    fill: #EFC350;
+    font-size: 20px;
+    font-family: "PT Sans", "sans-serif";
+    font-weight: bold;
+}
+
+h1 {
+    font-family: "PT Sans Narrow", "sans-serif";
+    font-weight: normal;
+    font-size: 26px;
+}
+
+p {
+    font-family: "PT Serif", "serif";
+}

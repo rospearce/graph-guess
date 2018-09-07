@@ -77,12 +77,21 @@ function drawChart() {
 
         svg.append("text")
         .attr("class", "axis label")
-        // .attr("transform", "rotate(-90)")
-        .attr("y", 5)
-        .attr("x", 8)
+        .attr("transform", "rotate(-90)")
+        .attr("y", 10)
+        .attr("x", 0)
+        .attr("dy", ".5em")
+        .style("text-anchor", "end")
+        .text("Temperature anomaly (C)");
+
+        // add draw text
+        svg.append("text")
+        .attr("class", "instructions")
+        .attr("y", 15)
+        .attr("x", 175)
         .attr("dy", ".5em")
         .style("text-anchor", "start")
-        .text("Temperature anomaly (C)");
+        .text("Draw here!");
 
         svg.append("clipPath")
         .attr("id", "graph-clip")
@@ -142,22 +151,16 @@ function updateChart() {
         .attr("class", "line2")
         .attr("clip-path","url(#graph-clip)")
         .attr("d", line2)
-        .call(transition);;
-
-        // let lines2 = svg.append('g')
-        // .attr('class', 'lines2');
-    
-        // lines2.selectAll('.line-group')
-        // .data([data]).enter()
-        // .append('g')
-        // .attr('class', 'line-group')
-        // .append('path')
-        // .attr('class', 'line2')  
-        // .attr("d", function(d) { return line2(d.values); })
-        // // .style('stroke', "#f3f3f3")
-        // .call(transition);
-
+        .call(transition);
 
     })
+
+}
+
+function resetChart() {
+
+    svg.selectAll(".line2").exit().remove();
+
+    removeUserPath();
 
 }
