@@ -59,11 +59,11 @@ body {
 }
 
 .axis line{
-    stroke: #5c5c5c;
+    stroke: #b1bfc9;
 }
 
-.axis path{
-    stroke: #5c5c5c;
+.axis path {
+    stroke: #b1bfc9;
 }
 
 .axis {
@@ -71,8 +71,12 @@ body {
 }
 
 .axis text{
-    fill: #333333;
-} 
+    fill: #858585;
+}
+
+.axis .label {
+    color: #333333;
+}
 
 .instructions {
     fill: #EFC350;
