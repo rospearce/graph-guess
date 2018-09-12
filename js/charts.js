@@ -124,6 +124,17 @@ function drawChart() {
         .attr("clip-path","url(#graph-clip)")
         .attr("d", line);
 
+        svg.append("circle")
+        .attr("r", 3)
+        .attr("cy", function(d) {
+            return 225;
+        })
+        .attr("cx", function(d) {
+            return 165;
+        })
+        .attr("fill", "#EFC350")
+        .attr("class", "start-circle");
+
 
     })
 
